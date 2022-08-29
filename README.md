@@ -29,8 +29,8 @@ Upgrade Python to the latest version if nessasary.
 ### 2.&nbsp;&nbsp;Clone this repository
 Change the current directory to the location where you want to install and run the following command:
 ```
-git clone https://github.com/1kmt/d7.git
-cd d7
+git clone https://github.com/1kmt/decompress7z.git
+cd decompress7z
 ```
 ### 3.&nbsp;&nbsp;Need 7-Zip executable for working
 In the default configuration, the script and 7-Zip executable must be stored in the same directory.
