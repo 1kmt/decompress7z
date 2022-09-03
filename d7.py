@@ -5,8 +5,8 @@ The specified file and all files contained in the specified directory (recursive
 Files are not selected by extension. 
 It also requires 7-Zip executable and library to run.
 """
-__date__ = "2022/08/26"
-__version__ = "1.0.4"
+__date__ = "2022/09/03"
+__version__ = "1.0.5"
 __author__ = "ikmt"
 
 """
@@ -33,13 +33,14 @@ _________________________________________________________________
 Command line examples
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 python d7.py -i ./filename.zip
-python d7.py -i ./filename1.zip -i ./filename2.7z -i ./dirname
+python d7.py -i ./filename1.zip ./filename2.7z ./dirname
 python d7.py -i ./filename.zip -o C:/Users/xxx/Desktop/dirname
 python d7.py -i ./filename.zip -p infected
 python d7.py -i ./filename.zip -p infected -c 65001
 _________________________________________________________________
 Changelog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2022-09-03 v1.0.5 changed command line argument options(-i option, nargs)
 2022-08-26 v1.0.4 fixed 30% of the code
 2022-08-26 v1.0.3 fixed 7-Zip command build (Apply password if extension is missing)
 2022-08-04 v1.0.2 fixed terminal output format
@@ -141,13 +142,13 @@ def check_argument():
         type=int,
         default=None,
         help="specify the code page identifier(utf-8:65001, shift-jis:932, EUC-JP:20932, etc). "
-            + "used when the path of the decompressed ZIP file is garbled."
+            + "used when the path of the decompressed ZIP file is garbled"
     )
     parser.add_argument("-i", "--input",
-        action="append",
-        required=True,
         type=str,
-        help="specify the compressed file or directory containing compressed files."
+        nargs='+',
+        required=True, 
+        help="specify the compressed file or directory containing compressed files"
     )
     parser.add_argument("-o", "--output",
         type=str,
@@ -156,7 +157,7 @@ def check_argument():
     parser.add_argument("-p", "--password",
         type=str,
         default=None,
-        help="specify the password to decrypt the encrypted compressed files (ZIP, 7z, RAR)."
+        help="specify the password to decrypt the encrypted compressed files (ZIP, 7z, RAR)"
     )
     parser.add_argument("-v", "--version",
         action="version",
@@ -165,7 +166,7 @@ def check_argument():
     parser.add_argument("-x", "--exe",
         type=str,
         default=default_exe_path,
-        help="specify the 7-Zip executable path."
+        help="specify the 7-Zip executable path"
     )
     args = parser.parse_args()
 

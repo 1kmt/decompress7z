@@ -32,6 +32,9 @@ Change the current directory to the location where you want to install and run t
 git clone https://github.com/1kmt/decompress7z.git
 cd decompress7z
 ```
+If "git clone" fails, you can download it as ZIP.
+Click "**Download ZIP**" from the "**Code**" dropdown.
+&nbsp; 
 ### 3.&nbsp;&nbsp;Need 7-Zip executable for working
 In the default configuration, the script and 7-Zip executable must be stored in the same directory.
 ```python
@@ -60,8 +63,8 @@ See 'Command line examples'
 &nbsp;  
 ## Usage
 ```
-usage: d7.py [-h] [-c CODEPAGE] -i INPUT [-o OUTPUT] [-p PASSWORD] [-v]
-             [-x EXE]
+usage: d7.py [-h] [-c CODEPAGE] -i INPUT [INPUT ...] [-o OUTPUT] [-p PASSWORD]
+             [-v] [-x EXE]
 
 The specified file and all files contained in the specified directory
 (recursive=False) will be decompressed with 7-Zip. Files are not selected by
@@ -72,24 +75,24 @@ optional arguments:
   -c CODEPAGE, --codepage CODEPAGE
                         specify the code page identifier(utf-8:65001, shift-
                         jis:932, EUC-JP:20932, etc). used when the path of the
-                        decompressed ZIP file is garbled.
-  -i INPUT, --input INPUT
+                        decompressed ZIP file is garbled
+  -i INPUT [INPUT ...], --input INPUT [INPUT ...]
                         specify the compressed file or directory containing
-                        compressed files.
+                        compressed files
   -o OUTPUT, --output OUTPUT
                         specify the output directory.
   -p PASSWORD, --password PASSWORD
                         specify the password to decrypt the encrypted
-                        compressed files (ZIP, 7z, RAR).
+                        compressed files (ZIP, 7z, RAR)
   -v, --version         show program's version number and exit
-  -x EXE, --exe EXE     specify the 7-Zip executable path.
+  -x EXE, --exe EXE     specify the 7-Zip executable path
 ```
 ### &#9635;&nbsp;&nbsp;Command line examples
 The -i option can specify a compressed file or the directory containing the compressed files.
 This option can be used multiple times.
 ```
 python d7.py -i ./filename.zip
-python d7.py -i ./filename1.zip -i ./filename2.rar -i ./dirname
+python d7.py -i ./filename1.zip ./filename2.rar ./dirname
 ```
 Specify the output directory with the -o option
 ```
